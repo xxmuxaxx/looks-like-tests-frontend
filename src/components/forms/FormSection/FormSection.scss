@@ -1,0 +1,7 @@
+.form-section:not(:last-child) {
+  margin-bottom: 36px;
+
+  @media screen and (max-width: 800px) {
+    margin-bottom: 24px;
+  }
+}

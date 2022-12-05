@@ -1,4 +1,4 @@
-@import "./styles/reset.scss";
+@import "./assets/reset.scss";
 
 :root {
   --white: #fff;
@@ -12,12 +12,14 @@
   --green: #4ba33e;
   --main: #ffbe17;
   --second: #2053b6;
+  --second-rgb: 32, 83, 182;
   --black-light: #292a31;
   --blue-light: #7b8ea2;
   --blue: #2053b6;
   --blue-dark: #00274e;
   --gray-light: #f5f5f5;
   --gray: #949ba5;
+  --gray-rgb: 148, 155, 165;
   --gray-medium: #a4a4a9;
 
   --font-exo: "Exo", sans-serif;

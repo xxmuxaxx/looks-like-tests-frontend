@@ -1,0 +1,19 @@
+.form-actions {
+  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 800px) {
+    margin-top: 24px;
+    flex-direction: column;
+  }
+
+  .button:not(:last-child) {
+    margin-right: 10px;
+
+    @media screen and (max-width: 800px) {
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+  }
+}

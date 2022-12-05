@@ -8,23 +8,3 @@
     grid-template: auto / auto;
   }
 }
-
-.content {
-  padding: 26px 20px;
-  max-height: 100vh;
-  overflow: auto;
-  scrollbar-color: var(--gray) transparent;
-  scrollbar-width: thin;
-
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: var(--gray);
-    border-radius: 2px;
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-    border-radius: 2px;
-  }
-}
