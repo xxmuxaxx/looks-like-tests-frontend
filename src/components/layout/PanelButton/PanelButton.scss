@@ -1,0 +1,31 @@
+.panel-button {
+  margin: 0 auto;
+  padding: 0;
+  display: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  @media screen and (max-width: 700px) {
+    display: flex;
+    align-items: center;
+
+    p {
+      display: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+      color: var(--white);
+    }
+
+    svg {
+      width: 28px;
+      min-width: 28px;
+      height: 28px;
+      min-height: 28px;
+      stroke: var(--main);
+      transform: rotate(-90deg);
+    }
+  }
+}

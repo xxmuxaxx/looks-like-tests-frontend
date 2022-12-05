@@ -1,0 +1,13 @@
+.section-title {
+  margin: 0 0 24px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--black-light);
+
+  @media (min-width: 900px) {
+    margin: 0 0 12px;
+  }
+}

@@ -1,0 +1,28 @@
+.panel-info {
+  color: var(--white);
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__label {
+    margin-bottom: 10px;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--gray);
+  }
+
+  &__value {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    span {
+      color: var(--main);
+    }
+  }
+}

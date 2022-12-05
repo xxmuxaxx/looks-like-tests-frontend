@@ -1,0 +1,19 @@
+.content-wrapper {
+  display: grid;
+  grid-template: auto / auto 330px;
+  gap: 120px;
+
+  @media screen and (max-width: 1200px) {
+    gap: 20px;
+  }
+
+  @media screen and (max-width: 900px) {
+    grid-template: auto / auto;
+  }
+}
+
+.content-aside {
+  @media screen and (max-width: 900px) {
+    grid-row: 1;
+  }
+}
