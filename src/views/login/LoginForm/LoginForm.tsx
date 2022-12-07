@@ -6,14 +6,16 @@ import type { FormLayout } from "components/forms";
 
 import "./LoginForm.scss";
 
-type LoginFormFields = {
+export type LoginFormFields = {
   email: string;
   password: string;
+  rememberMe: boolean;
 };
 
 const initialValues: LoginFormFields = {
   email: "",
   password: "",
+  rememberMe: false,
 };
 
 const layout: FormLayout<LoginFormFields> = [
@@ -26,7 +28,8 @@ const layout: FormLayout<LoginFormFields> = [
         gap: 20,
         children: [
           { name: "email", type: "string", label: "Email" },
-          { name: "password", type: "password", label: "Password" },
+          { name: "password", type: "password", label: "Пароль" },
+          { name: "rememberMe", type: "checkbox", label: "Запомнить меня" },
         ],
       },
     ],
@@ -43,15 +46,19 @@ const layout: FormLayout<LoginFormFields> = [
 ];
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email("invalid email").required("required"),
+  email: yup
+    .string() /* .email("invalid email") */
+    .required("required"),
   password: yup.string().required("required"),
+  rememberMe: yup.bool(),
 });
 
 type LoginFormProps = {
+  isLoading: boolean;
   onSubmit: (values: LoginFormFields) => void;
 };
 
-const LoginForm = ({ onSubmit }: LoginFormProps) => {
+const LoginForm = ({ isLoading, onSubmit }: LoginFormProps) => {
   return (
     <div>
       <Form<LoginFormFields>
@@ -59,6 +66,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
         validationSchema={loginSchema}
         onSubmit={onSubmit}
         layout={layout}
+        isLoading={isLoading}
       />
     </div>
   );

@@ -5,7 +5,7 @@ import Label, { LabelProps } from "../Label/Label";
 
 import "./Input.scss";
 
-type InputProps = InputBaseProps & Omit<LabelProps, "children">;
+export type InputProps = InputBaseProps & Omit<LabelProps, "children">;
 
 const Input = ({
   label,

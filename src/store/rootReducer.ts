@@ -1,7 +1,9 @@
-import { authenticationReducer } from "./authentication";
+import { authApi } from "services/authApi";
+import { authReducer } from "./auth";
 
 const rootReducer = {
-  authentication: authenticationReducer,
+  [authApi.reducerPath]: authApi.reducer,
+  authentication: authReducer,
 };
 
 export default rootReducer;

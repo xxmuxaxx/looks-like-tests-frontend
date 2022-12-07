@@ -5,7 +5,7 @@ import { Button, SectionTitle } from "components/shared";
 import FormGrid from "../FormGrid/FormGrid";
 import FormSection from "../FormSection/FormSection";
 import FormActions from "../FormActions/FormActions";
-import Input from "../Input/Input";
+import FormField from "../FormField/FormField";
 import type {
   ActionItem,
   FieldItem,
@@ -21,6 +21,7 @@ type FormProps<T extends FormFields> = {
   initialValues: T;
   validationSchema?: any;
   layout: FormLayout<T>;
+  isLoading?: boolean;
   onSubmit: (values: T, formikHelpers: FormikHelpers<T>) => void;
 };
 
@@ -28,6 +29,7 @@ const Form = <T extends FormFields>({
   initialValues,
   validationSchema,
   layout,
+  isLoading,
   onSubmit,
 }: FormProps<T>) => {
   return (
@@ -86,7 +88,7 @@ const Form = <T extends FormFields>({
           const { name, label, type } = item;
 
           return (
-            <Input
+            <FormField
               key={`field-${index}-${name as string}`}
               label={label}
               type={type}
@@ -101,7 +103,11 @@ const Form = <T extends FormFields>({
 
         const getAction = (item: ActionItem, index: number) => {
           return (
-            <Button key={`action-${index}`} type={item.type}>
+            <Button
+              key={`action-${index}`}
+              type={item.type}
+              disabled={isLoading}
+            >
               {item.text}
             </Button>
           );

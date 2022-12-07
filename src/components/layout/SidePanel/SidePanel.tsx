@@ -1,6 +1,7 @@
 import { useState } from "react";
 import classNames from "classnames";
 
+import { useAuth } from "store/auth";
 import { Bell, Personal, Tiles } from "components/icons";
 import { Portal } from "components/shared";
 import PanelInfo from "../PanelInfo/PanelInfo";
@@ -12,6 +13,7 @@ import PanelContact from "../PanelContact/PanelContact";
 import "./SidePanel.scss";
 
 const SidePanel = () => {
+  const { logout } = useAuth();
   const [isExpand, setIsExpand] = useState(false);
 
   const handleExpandToggle = () => {
@@ -43,7 +45,7 @@ const SidePanel = () => {
           { name: "Новые тесты", path: "tests", icon: <Bell /> },
           { name: "История тестов", path: "history", icon: <Tiles /> },
         ]}
-        onLogout={() => console.log("Logout")}
+        onLogout={logout}
       />
 
       <PanelContact email="xxmuxaxx@mail.ru" />

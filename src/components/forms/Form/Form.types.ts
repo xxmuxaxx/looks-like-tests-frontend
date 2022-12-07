@@ -32,5 +32,5 @@ export type ActionItem = {
 export type FieldItem<T extends string | number | symbol> = {
   name: T;
   label: string;
-  type: "string" | "password";
+  type: "string" | "password" | "checkbox";
 };
