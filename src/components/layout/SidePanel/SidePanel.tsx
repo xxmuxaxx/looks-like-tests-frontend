@@ -8,9 +8,10 @@ import PanelInfo from "../PanelInfo/PanelInfo";
 import Logo from "../Logo/Logo";
 import Nav from "../Nav/Nav";
 import PanelButton from "../PanelButton/PanelButton";
-import PanelContact from "../PanelContact/PanelContact";
+// import PanelContact from "../PanelContact/PanelContact";
 
 import "./SidePanel.scss";
+import PanelCopyright from "../PanelCopyright/PanelCopyright";
 
 const SidePanel = () => {
   const { logout } = useAuth();
@@ -48,7 +49,8 @@ const SidePanel = () => {
         onLogout={() => logout()}
       />
 
-      <PanelContact email="xxmuxaxx@mail.ru" />
+      {/* <PanelContact email="xxmuxaxx@mail.ru" /> */}
+      <PanelCopyright />
     </aside>
   );
 };

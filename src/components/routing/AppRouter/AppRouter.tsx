@@ -4,6 +4,7 @@ import { Layout } from "components/layout";
 import { SectionTitle } from "components/shared";
 import LoginPage from "views/login";
 import ProfilePage from "views/profile";
+import TestsPage from "views/tests";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 const routes = createBrowserRouter([
@@ -20,7 +21,7 @@ const routes = createBrowserRouter([
           },
           {
             path: "tests",
-            element: <SectionTitle>Тесты</SectionTitle>,
+            element: <TestsPage />,
           },
           {
             path: "tests/:testId",

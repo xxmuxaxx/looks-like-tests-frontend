@@ -4,7 +4,12 @@ import { Toaster } from "react-hot-toast";
 import { AppRouter } from "components/routing";
 import { store } from "store";
 
-import "typeface-exo";
+import "@fontsource/exo-2";
+import "@fontsource/exo-2/500.css";
+import "@fontsource/exo-2/600.css";
+import "@fontsource/exo-2/700.css";
+import "@fontsource/exo-2/800.css";
+import "@fontsource/exo-2/900.css";
 
 function App() {
   return (

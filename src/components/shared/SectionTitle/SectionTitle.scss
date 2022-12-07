@@ -7,7 +7,7 @@
   text-transform: uppercase;
   color: var(--black-light);
 
-  @media (min-width: 900px) {
+  @media (max-width: 900px) {
     margin: 0 0 12px;
   }
 }
