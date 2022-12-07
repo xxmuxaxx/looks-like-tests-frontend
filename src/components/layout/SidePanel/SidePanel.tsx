@@ -14,7 +14,7 @@ import "./SidePanel.scss";
 import PanelCopyright from "../PanelCopyright/PanelCopyright";
 
 const SidePanel = () => {
-  const { logout } = useAuth();
+  const { logout, fullName } = useAuth();
   const [isExpand, setIsExpand] = useState(false);
 
   const handleExpandToggle = () => {
@@ -38,7 +38,7 @@ const SidePanel = () => {
 
       <PanelButton onClick={handleExpandToggle} />
 
-      <PanelInfo name="Иванов Константин Игорьевич" rating={45} />
+      <PanelInfo name={fullName} rating={45} />
 
       <Nav
         items={[
