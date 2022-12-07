@@ -1,0 +1,1 @@
+export { getRegEpx } from "./getRegEpx";

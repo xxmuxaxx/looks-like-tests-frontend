@@ -45,7 +45,7 @@ const SidePanel = () => {
           { name: "Новые тесты", path: "tests", icon: <Bell /> },
           { name: "История тестов", path: "history", icon: <Tiles /> },
         ]}
-        onLogout={logout}
+        onLogout={() => logout()}
       />
 
       <PanelContact email="xxmuxaxx@mail.ru" />

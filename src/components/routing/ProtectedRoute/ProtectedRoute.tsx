@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import toast from "react-hot-toast";
 
 import { useAuth } from "store/auth";
 
@@ -13,8 +14,14 @@ const ProtectedRoute = () => {
     if (token) {
       interval = setInterval(() => {
         const decodedToken = jwtDecode<any>(token);
+        const tokenDate = decodedToken.exp * 1000;
+        const remaining = tokenDate - Date.now();
 
-        if (decodedToken.exp * 1000 < Date.now()) logout();
+        if (new Date(remaining).getSeconds() === 10) {
+          toast.error("Ваша сессия будет прекращена через 10 секунд");
+        }
+
+        if (remaining <= 0) logout();
       }, 1000);
     }
 

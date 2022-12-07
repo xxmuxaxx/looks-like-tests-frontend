@@ -2,7 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Layout } from "components/layout";
 import { SectionTitle } from "components/shared";
-import LoginPage from "views/login/LoginPage/LoginPage";
+import LoginPage from "views/login";
+import ProfilePage from "views/profile";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 const routes = createBrowserRouter([
@@ -31,7 +32,7 @@ const routes = createBrowserRouter([
           },
           {
             path: "profile",
-            element: <SectionTitle>Профиль</SectionTitle>,
+            element: <ProfilePage />,
           },
         ],
       },

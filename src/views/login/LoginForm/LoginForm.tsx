@@ -1,10 +1,12 @@
-import React from "react";
-import * as yup from "yup";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
+import { useAuthenticateMutation } from "services/authApi";
 import { Form } from "components/forms";
-import type { FormLayout } from "components/forms";
+import { loginLayout, loginSchema } from "./LoginForm.data";
 
 import "./LoginForm.scss";
+import { useAuth } from "store/auth";
 
 export type LoginFormFields = {
   email: string;
@@ -18,54 +20,32 @@ const initialValues: LoginFormFields = {
   rememberMe: false,
 };
 
-const layout: FormLayout<LoginFormFields> = [
-  {
-    type: "section",
-    children: [
-      {
-        type: "fields",
-        columns: 1,
-        gap: 20,
-        children: [
-          { name: "email", type: "string", label: "Email" },
-          { name: "password", type: "password", label: "Пароль" },
-          { name: "rememberMe", type: "checkbox", label: "Запомнить меня" },
-        ],
-      },
-    ],
-  },
-  {
-    type: "actions",
-    children: [
-      {
-        type: "submit",
-        text: "Войти",
-      },
-    ],
-  },
-];
+const LoginForm = () => {
+  const [login, { isSuccess }] = useAuthenticateMutation();
+  const { user, token } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
 
-const loginSchema = yup.object().shape({
-  email: yup
-    .string() /* .email("invalid email") */
-    .required("required"),
-  password: yup.string().required("required"),
-  rememberMe: yup.bool(),
-});
+  const handleLogin = async ({
+    email,
+    password,
+    rememberMe,
+  }: LoginFormFields) => {
+    setIsLoading(true);
+    await login({ username: email, password, rememberMe });
+    setIsLoading(false);
+  };
 
-type LoginFormProps = {
-  isLoading: boolean;
-  onSubmit: (values: LoginFormFields) => void;
-};
+  if (isSuccess && user && token) {
+    return <Navigate to="/" replace={true} />;
+  }
 
-const LoginForm = ({ isLoading, onSubmit }: LoginFormProps) => {
   return (
     <div>
-      <Form<LoginFormFields>
+      <Form
         initialValues={initialValues}
         validationSchema={loginSchema}
-        onSubmit={onSubmit}
-        layout={layout}
+        onSubmit={handleLogin}
+        layout={loginLayout}
         isLoading={isLoading}
       />
     </div>
