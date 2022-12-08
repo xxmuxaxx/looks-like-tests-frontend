@@ -1,0 +1,9 @@
+.student-test-list {
+  display: grid;
+  grid-template: auto / auto;
+  gap: 40px;
+}
+
+.student-test-empty {
+  margin-top: 60px;
+}

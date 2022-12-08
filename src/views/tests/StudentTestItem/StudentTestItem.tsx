@@ -1,5 +1,4 @@
-import TestCard from "../TestCard/TestCard";
-import TestInfo from "../TestInfo/TestInfo";
+import { TestCard, TestInfo } from "components/tests";
 
 import "./StudentTestItem.scss";
 
