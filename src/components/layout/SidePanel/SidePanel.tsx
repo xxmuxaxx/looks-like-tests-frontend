@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classNames from "classnames";
 
-import { useAuth } from "store/auth";
+import { useProtectedAuth } from "store/auth";
 import { Bell, Personal, Tiles } from "components/icons";
 import { Portal } from "components/shared";
 import PanelInfo from "../PanelInfo/PanelInfo";
@@ -14,7 +14,7 @@ import "./SidePanel.scss";
 import PanelCopyright from "../PanelCopyright/PanelCopyright";
 
 const SidePanel = () => {
-  const { logout, fullName } = useAuth();
+  const { logout, fullName } = useProtectedAuth();
   const [isExpand, setIsExpand] = useState(false);
 
   const handleExpandToggle = () => {

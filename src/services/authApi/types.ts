@@ -3,9 +3,9 @@ export interface IToken {
 }
 
 export enum Roles {
-  TEACHER = "TEACHER",
-  STUDENT = "STUDENT",
-  ADMIN = "ADMIN",
+  teacher = "TEACHER",
+  student = "STUDENT",
+  admin = "ADMIN",
 }
 
 export interface IUser {

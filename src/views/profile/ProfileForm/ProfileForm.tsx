@@ -2,7 +2,7 @@ import { FormikHelpers } from "formik";
 
 import { Form } from "components/forms";
 import { profileFormLayout, profileFormSchema } from "./ProfileForm.data";
-import { useAuth } from "store/auth";
+import { useProtectedAuth } from "store/auth";
 
 export type ProfileFormFields = {
   firstName?: string;
@@ -15,9 +15,7 @@ export type ProfileFormFields = {
 };
 
 const ProfileForm = () => {
-  const { user } = useAuth();
-
-  if (!user) throw new Error("");
+  const { user } = useProtectedAuth();
 
   const initialValues: ProfileFormFields = {
     firstName: user.firstName,

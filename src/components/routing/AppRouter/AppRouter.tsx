@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { useAuthTokenVerify } from "store/auth";
 import { Layout } from "components/layout";
 import { SectionTitle } from "components/shared";
 import { Roles } from "services/authApi";
@@ -11,49 +12,54 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <ProtectedRoute />,
     children: [
       {
-        element: (
-          <ProtectedRoute
-            allowedRoles={[Roles.ADMIN, Roles.TEACHER, Roles.STUDENT]}
-          />
-        ),
+        element: <Layout />,
         children: [
           {
-            index: true,
-            element: <SectionTitle>Главная</SectionTitle>,
+            element: (
+              <ProtectedRoute
+                allowedRoles={[Roles.admin, Roles.teacher, Roles.student]}
+              />
+            ),
+            children: [
+              {
+                index: true,
+                element: <SectionTitle>Главная</SectionTitle>,
+              },
+              {
+                path: "tests",
+                element: <TestsPage />,
+              },
+              {
+                path: "tests/:testId",
+                element: <SectionTitle>Тест</SectionTitle>,
+              },
+              {
+                path: "history",
+                element: <SectionTitle>История тестов</SectionTitle>,
+              },
+              {
+                path: "profile",
+                element: <ProfilePage />,
+              },
+            ],
           },
           {
-            path: "tests",
-            element: <TestsPage />,
+            element: <ProtectedRoute allowedRoles={[Roles.admin]} />,
+            children: [
+              {
+                path: "admin",
+                element: <SectionTitle>Страница администратора</SectionTitle>,
+              },
+            ],
           },
           {
-            path: "tests/:testId",
-            element: <SectionTitle>Тест</SectionTitle>,
-          },
-          {
-            path: "history",
-            element: <SectionTitle>История тестов</SectionTitle>,
-          },
-          {
-            path: "profile",
-            element: <ProfilePage />,
+            path: "not-allowed",
+            element: <SectionTitle>Недостаточно прав</SectionTitle>,
           },
         ],
-      },
-      {
-        element: <ProtectedRoute allowedRoles={[Roles.ADMIN]} />,
-        children: [
-          {
-            path: "admin",
-            element: <SectionTitle>Страница администратора</SectionTitle>,
-          },
-        ],
-      },
-      {
-        path: "not-allowed",
-        element: <SectionTitle>Недостаточно прав</SectionTitle>,
       },
     ],
   },
@@ -64,6 +70,8 @@ const routes = createBrowserRouter([
 ]);
 
 const AppRouter = () => {
+  useAuthTokenVerify();
+
   return <RouterProvider router={routes} />;
 };
 
