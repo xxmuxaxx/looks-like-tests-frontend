@@ -1,0 +1,15 @@
+.progress {
+  height: 4px;
+  background-color: var(--white);
+
+  p {
+    height: 100%;
+    min-width: 0%;
+    max-width: 100%;
+    background-color: var(--blue);
+    border-radius: 2px;
+    transition-property: width;
+    transition-timing-function: var(--transition-timing-function);
+    transition-duration: var(--transition-duration);
+  }
+}

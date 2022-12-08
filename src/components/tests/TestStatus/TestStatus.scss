@@ -1,0 +1,38 @@
+.test-status {
+  margin: 0 10px;
+  padding: 6px 0;
+  background: var(--white);
+  border-radius: 10px;
+
+  @media screen and (max-width: 900px) {
+    margin: 0;
+  }
+
+  &__row {
+    padding: 16px 30px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      border-bottom: 2px solid rgba(var(--gray-rgb), 0.1);
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    color: var(--gray);
+  }
+
+  &__value {
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    text-align: right;
+    letter-spacing: 0.5px;
+    color: var(--blue-dark);
+  }
+}

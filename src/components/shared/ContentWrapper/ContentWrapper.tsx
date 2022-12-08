@@ -3,7 +3,7 @@ import React from "react";
 import "./ContentWrapper.scss";
 
 type ContentWrapperType = {
-  children: React.ReactNode;
+  children: React.ReactElement;
   aside?: React.ReactNode;
 };
 

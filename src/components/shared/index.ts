@@ -5,3 +5,5 @@ export { default as Content } from "./Content/Content";
 export { default as Button } from "./Button/Button";
 export { default as Empty } from "./Empty/Empty";
 export { default as List } from "./List/List";
+export { default as Image } from "./Image/Image";
+export { default as Progress } from "./Progress/Progress";

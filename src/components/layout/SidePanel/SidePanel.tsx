@@ -44,6 +44,7 @@ const SidePanel = () => {
         items={[
           { name: "Личные данные", path: "profile", icon: <Personal /> },
           { name: "Новые тесты", path: "tests", icon: <Bell /> },
+          { name: "Тест", path: "tests/test", icon: <Bell /> },
           { name: "История тестов", path: "history", icon: <Tiles /> },
         ]}
         onLogout={() => logout()}

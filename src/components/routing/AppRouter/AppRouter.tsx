@@ -7,6 +7,7 @@ import { Roles } from "services/authApi";
 import LoginPage from "views/login";
 import ProfilePage from "views/profile";
 import TestsPage from "views/tests";
+import TestPage from "views/test";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 const routes = createBrowserRouter([
@@ -34,7 +35,7 @@ const routes = createBrowserRouter([
               },
               {
                 path: "tests/:testId",
-                element: <SectionTitle>Тест</SectionTitle>,
+                element: <TestPage />,
               },
               {
                 path: "history",
