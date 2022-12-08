@@ -1,12 +1,18 @@
 import { useEffect } from "react";
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet, Navigate, useLocation } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import toast from "react-hot-toast";
 
 import { useAuth } from "store/auth";
+import { Roles } from "services/authApi";
 
-const ProtectedRoute = () => {
+type ProtectedRouteProps = {
+  allowedRoles: Roles[];
+};
+
+const ProtectedRoute = ({ allowedRoles }: ProtectedRouteProps) => {
   const { user, token, logout } = useAuth();
+  const location = useLocation();
 
   useEffect(() => {
     let interval: NodeJS.Timer;
@@ -28,7 +34,15 @@ const ProtectedRoute = () => {
     return () => clearInterval(interval);
   }, [logout, token]);
 
-  return user ? <Outlet /> : <Navigate to="/login" replace={true} />;
+  return user?.authorities.find((authority) =>
+    allowedRoles.includes(authority.name)
+  ) ? (
+    <Outlet />
+  ) : user ? (
+    <Navigate to="/not-allowed" state={{ from: location }} replace />
+  ) : (
+    <Navigate to="/login" state={{ from: location }} replace />
+  );
 };
 
 export default ProtectedRoute;

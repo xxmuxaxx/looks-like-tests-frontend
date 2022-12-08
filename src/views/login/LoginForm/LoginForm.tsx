@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 import { useAuthenticateMutation } from "services/authApi";
 import { Form } from "components/forms";
@@ -21,9 +21,11 @@ const initialValues: LoginFormFields = {
 };
 
 const LoginForm = () => {
+  const location = useLocation();
   const [login, { isSuccess }] = useAuthenticateMutation();
   const { user, token } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = async ({
     email,
@@ -36,7 +38,7 @@ const LoginForm = () => {
   };
 
   if (isSuccess && user && token) {
-    return <Navigate to="/" replace={true} />;
+    return <Navigate to={from} replace />;
   }
 
   return (
