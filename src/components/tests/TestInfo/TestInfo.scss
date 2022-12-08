@@ -1,0 +1,91 @@
+.test-info {
+  padding: 20px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: 1200px) {
+    padding: 20px;
+  }
+
+  &__name {
+    margin-bottom: 40px;
+    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    color: var(--black-light);
+    text-align: center;
+  }
+
+  &__description {
+    margin-bottom: 40px;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    color: var(--gray);
+    text-align: center;
+  }
+
+  &__action {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list {
+    margin-bottom: 28px;
+    display: grid;
+    grid-template: auto / auto;
+    gap: 24px;
+
+    $item: #{&}-item;
+
+    &-item {
+      display: flex;
+    }
+
+    &-icon {
+      margin-right: 10px;
+      display: flex;
+      width: 30px;
+      min-width: 30px;
+      height: 30px;
+      min-height: 30px;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      color: var(--black-light);
+
+      #{$item}.done & {
+        color: var(--green);
+      }
+
+      #{$item}.fail & {
+        color: var(--red);
+      }
+
+      svg {
+        display: block;
+        fill: currentColor;
+      }
+    }
+
+    &-count {
+      margin-bottom: 4px;
+      font-weight: bold;
+      font-size: 1.125rem;
+      line-height: 1;
+      letter-spacing: 0.5px;
+      color: var(--black-light);
+    }
+
+    &-time {
+      font-size: 1rem;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+      color: var(--gray);
+    }
+  }
+}

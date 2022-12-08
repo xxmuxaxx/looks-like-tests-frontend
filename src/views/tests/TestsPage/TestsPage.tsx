@@ -1,17 +1,14 @@
-import { SectionTitle } from "components/shared";
-import TestList from "../TestList/TestList";
-import { mockTests } from "./TestsPage.data";
-
-import "./TestsPage.scss";
+import { Roles } from "services/authApi";
+import { useProtectedAuth } from "store/auth";
+import StudentTests from "../StudentTests/StudentTests";
 
 const TestsPage = () => {
-  return (
-    <>
-      <SectionTitle>Ваши тесты</SectionTitle>
-      <section className="tests-section">
-        <TestList items={mockTests} />
-      </section>
-    </>
+  const { userHasRole } = useProtectedAuth();
+
+  return userHasRole(Roles.student) ? (
+    <div>teacher Tests</div>
+  ) : (
+    <StudentTests />
   );
 };
 

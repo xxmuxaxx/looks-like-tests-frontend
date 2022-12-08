@@ -1,0 +1,12 @@
+.student-test-item {
+  display: grid;
+  grid-template: auto / auto 380px;
+
+  @media screen and (max-width: 1200px) {
+    grid-template: auto / auto 260px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    grid-template: auto / auto;
+  }
+}
