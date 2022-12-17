@@ -1,5 +1,5 @@
 export interface IToken {
-  value: string;
+  readonly value: string;
 }
 
 export enum Roles {

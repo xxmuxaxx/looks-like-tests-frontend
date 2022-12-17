@@ -12,7 +12,7 @@ type TestInfoProps = {
 
 const TestInfo = ({ testId, attemps }: TestInfoProps) => (
   <div className="test-info">
-    {attemps ? (
+    {attemps?.length ? (
       <ul className="test-info__list">
         {attemps.map(({ status, rightAnswers, date }, index) => (
           <li

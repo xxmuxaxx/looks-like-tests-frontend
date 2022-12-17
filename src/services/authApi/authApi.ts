@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
-import { authActions } from "store/auth/auth.slice";
+import { authActions } from "store/auth";
 import { baseQuery } from "../baseQuery";
 import { IToken, IUser, LoginDTO } from "./types";
 

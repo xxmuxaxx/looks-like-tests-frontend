@@ -6,7 +6,7 @@ export type StudentTestItemProps = {
   testId: number;
   title: string;
   description: string;
-  info: Array<{ name: string; value: string }>;
+  info: Array<{ name: string; value: string | number }>;
   attemps?: Array<{ status: string; rightAnswers: number; date: string }>;
 };
 

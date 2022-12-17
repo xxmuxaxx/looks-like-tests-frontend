@@ -7,7 +7,7 @@ type TestCardProps = {
   testId: number;
   title: string;
   description: string;
-  info: Array<{ name: string; value: string }>;
+  info: Array<{ name: string; value: string | number }>;
 };
 
 const TestCard = ({ testId, title, description, info }: TestCardProps) => (

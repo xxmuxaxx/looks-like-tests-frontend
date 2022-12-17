@@ -1,2 +1,2 @@
-export { default as authReducer } from "./auth.slice";
+export { authReducer, authActions } from "./auth.slice";
 export * from "./auth.hooks";
