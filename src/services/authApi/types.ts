@@ -16,8 +16,7 @@ export interface IUser {
   email?: string;
   phone?: string;
   activated?: boolean;
-  // authorities: Roles[];
-  authorities: { name: Roles }[];
+  authorities: Roles[];
 }
 
 export type RegistrationDTO = {

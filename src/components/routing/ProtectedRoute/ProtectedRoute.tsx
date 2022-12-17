@@ -12,9 +12,7 @@ const ProtectedRoute = ({ allowedRoles }: ProtectedRouteProps) => {
   const location = useLocation();
 
   return allowedRoles ? (
-    user?.authorities.find((authority) =>
-      allowedRoles.includes(authority.name)
-    ) ? (
+    user?.authorities.find((authority) => allowedRoles.includes(authority)) ? (
       <Outlet />
     ) : user ? (
       <Navigate to="/not-allowed" state={{ from: location }} replace />

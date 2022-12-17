@@ -29,7 +29,7 @@ const useProtectedAuth = () => {
   const fullName = getFullName(user.firstName, user.lastName, user.middleName);
 
   const userHasRole = (role: Roles): boolean =>
-    user.authorities.some((authority) => role === authority.name);
+    user.authorities.some((authority) => role === authority);
 
   return { user, token, fullName, userHasRole, ...auth };
 };
