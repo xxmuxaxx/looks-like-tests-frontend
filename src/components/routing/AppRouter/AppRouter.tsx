@@ -34,7 +34,7 @@ const routes = createBrowserRouter([
                 element: <TestsPage />,
               },
               {
-                path: "tests/:testId",
+                path: "tests/progress/:testProgressId",
                 element: <TestPage />,
               },
               {

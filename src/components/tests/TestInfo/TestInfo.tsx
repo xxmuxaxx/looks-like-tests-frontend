@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 import { Cross, Done } from "components/icons";
-import { Button } from "components/shared";
+import TestStartButton from "../TestStartButton/TestStartButton";
 
 import "./TestInfo.scss";
 
@@ -48,7 +48,7 @@ const TestInfo = ({ testId, attemps }: TestInfoProps) => (
     )}
 
     <div className="test-info__action">
-      <Button>Начать тестирование</Button>
+      <TestStartButton testId={testId} />
     </div>
   </div>
 );

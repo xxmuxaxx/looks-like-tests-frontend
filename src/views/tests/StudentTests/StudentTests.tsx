@@ -13,7 +13,7 @@ const StudentTests = ({ tests, isLoading }: StudentTestsProps) => (
   <section>
     <SectionTitle>Ваши тесты</SectionTitle>
     {isLoading && <SectionTitle>Идет загрузка...</SectionTitle>}
-    {tests?.length && (
+    {tests?.length ? (
       <List
         className="student-test-list"
         items={tests}
@@ -47,7 +47,7 @@ const StudentTests = ({ tests, isLoading }: StudentTestsProps) => (
           />
         )}
       />
-    )}
+    ) : null}
     {!isLoading && (!tests || !tests.length) && (
       <Empty
         className="student-test-empty"

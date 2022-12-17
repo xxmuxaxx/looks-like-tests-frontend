@@ -1,12 +1,19 @@
 import { List } from "components/shared";
+import { IAnswer, QuestionTypes } from "services/testsApi";
 
 import "./TestAnswers.scss";
 
 type TestAnswersProps = {
-  type: "radio" | "checkbox";
-  items: Array<{ id: number; name: string }>;
+  type: QuestionTypes;
+  items: IAnswer[];
   activeIds: number[];
   setActiveIds: React.Dispatch<React.SetStateAction<number[]>>;
+};
+
+const htmlTypes = {
+  [QuestionTypes.OPTIONS_MULTIPLY]: "checkbox",
+  [QuestionTypes.OPTIONS]: "radio",
+  [QuestionTypes.WRITING]: "radio",
 };
 
 const TestAnswers = ({
@@ -23,11 +30,11 @@ const TestAnswers = ({
         <label className="test-answers__label">
           <input
             className="test-answers__input"
-            type={type}
+            type={htmlTypes[type]}
             checked={activeIds.includes(id)}
             onChange={() => {
               setActiveIds((currentIds) => {
-                if (type === "checkbox") {
+                if (type === QuestionTypes.OPTIONS_MULTIPLY) {
                   return currentIds.includes(id)
                     ? currentIds.filter((i) => i !== id)
                     : [...currentIds, id];
