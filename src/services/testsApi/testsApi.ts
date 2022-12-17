@@ -40,7 +40,7 @@ export const testsApi = createApi({
       query: ({ testProgressId, answers }) => ({
         url: `tests/progress/${testProgressId}/finishes`,
         method: "POST",
-        body: answers,
+        body: { answers: answers },
       }),
     }),
   }),
