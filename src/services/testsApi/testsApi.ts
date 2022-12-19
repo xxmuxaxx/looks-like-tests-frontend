@@ -42,6 +42,10 @@ export const testsApi = createApi({
         method: "POST",
         body: { answers: answers },
       }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        dispatch(testsActions.deleteProgress(data.testProgress.id));
+      },
     }),
   }),
 });

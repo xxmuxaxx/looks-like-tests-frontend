@@ -1,6 +1,7 @@
 import classNames from "classnames";
 
 import { Cross, Done } from "components/icons";
+import TestContinueButton from "../TestContinueButton/TestContinueButton";
 import TestStartButton from "../TestStartButton/TestStartButton";
 
 import "./TestInfo.scss";
@@ -8,9 +9,10 @@ import "./TestInfo.scss";
 type TestInfoProps = {
   testId: number;
   attemps?: Array<{ status: string; rightAnswers: number; date: string }>;
+  testProgressId?: number;
 };
 
-const TestInfo = ({ testId, attemps }: TestInfoProps) => (
+const TestInfo = ({ testId, attemps, testProgressId }: TestInfoProps) => (
   <div className="test-info">
     {attemps?.length ? (
       <ul className="test-info__list">
@@ -48,7 +50,11 @@ const TestInfo = ({ testId, attemps }: TestInfoProps) => (
     )}
 
     <div className="test-info__action">
-      <TestStartButton testId={testId} />
+      {testProgressId ? (
+        <TestContinueButton testProgressId={testProgressId} />
+      ) : (
+        <TestStartButton testId={testId} />
+      )}
     </div>
   </div>
 );

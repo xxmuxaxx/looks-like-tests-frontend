@@ -8,6 +8,7 @@ export type StudentTestItemProps = {
   description: string;
   info: Array<{ name: string; value: string | number }>;
   attemps?: Array<{ status: string; rightAnswers: number; date: string }>;
+  testProgressId?: number;
 };
 
 const StudentTestItem = ({
@@ -16,10 +17,11 @@ const StudentTestItem = ({
   description,
   info,
   attemps,
+  testProgressId,
 }: StudentTestItemProps) => (
   <li className="student-test-item">
     <TestCard {...{ testId, title, description, info }} />
-    <TestInfo {...{ testId, attemps }} />
+    <TestInfo {...{ testProgressId, testId, attemps }} />
   </li>
 );
 

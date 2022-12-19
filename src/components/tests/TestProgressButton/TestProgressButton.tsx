@@ -29,8 +29,6 @@ const TestProgressButton = ({
   const { addProgressAnswer } = useTests();
   const from = location.state?.from?.pathname || "/";
 
-  console.log(from);
-
   const handleNext = () => {
     addProgressAnswer({ testProgressId, answer });
     setActiveAnswerIds([]);

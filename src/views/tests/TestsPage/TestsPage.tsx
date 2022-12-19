@@ -7,7 +7,7 @@ import TeacherTests from "../TeacherTests/TeacherTests";
 
 const TestsPage = () => {
   const { isLoading } = useGetTestsQuery();
-  const { tests } = useTests();
+  const { tests, progress } = useTests();
   const { userHasRole } = useProtectedAuth();
 
   if (userHasRole(Roles.teacher)) {
@@ -15,7 +15,7 @@ const TestsPage = () => {
   }
 
   if (userHasRole(Roles.student)) {
-    return <StudentTests {...{ tests, isLoading }} />;
+    return <StudentTests {...{ tests, progress, isLoading }} />;
   }
 
   return null;

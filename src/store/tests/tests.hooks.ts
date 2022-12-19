@@ -8,6 +8,9 @@ export const useTests = (testProgressId?: number) => {
   const actions = bindActionCreators({ ...testsActions }, dispatch);
 
   const selectProgress = (store: RootState) => store.tests.progress;
+
+  const progress = useAppSelector(selectProgress);
+
   const selectCurrentProgress = createSelector(selectProgress, (progress) => {
     if (!testProgressId || !progress) return null;
     return progress[testProgressId];
@@ -34,5 +37,5 @@ export const useTests = (testProgressId?: number) => {
     )
   );
 
-  return { tests, activeQuestionIndex, answers, test, ...actions };
+  return { tests, progress, activeQuestionIndex, answers, test, ...actions };
 };
