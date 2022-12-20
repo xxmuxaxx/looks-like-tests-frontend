@@ -1,8 +1,9 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
+import toast from "react-hot-toast";
 
 import { authActions } from "store/auth";
 import { baseQuery } from "../baseQuery";
-import { IToken, IUser, LoginDTO } from "./types";
+import { IToken, IUser, LoginDTO, RegistrationDTO, Roles } from "./types";
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -30,7 +31,25 @@ export const authApi = createApi({
         dispatch(authActions.setUser(data));
       },
     }),
+    registration: builder.mutation<
+      IUser,
+      Omit<RegistrationDTO, "authorities" | "username">
+    >({
+      query: (data) => ({
+        url: "user",
+        method: "POST",
+        body: { ...data, username: data.email, authorities: [Roles.student] },
+      }),
+      async onQueryStarted(_, { queryFulfilled }) {
+        await queryFulfilled;
+        toast.success("Пользователь создан!");
+      },
+    }),
   }),
 });
 
-export const { useAuthenticateMutation, useGetUserMutation } = authApi;
+export const {
+  useAuthenticateMutation,
+  useGetUserMutation,
+  useRegistrationMutation,
+} = authApi;

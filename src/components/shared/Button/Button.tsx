@@ -3,8 +3,15 @@ import React, { useMemo } from "react";
 
 import "./Button.scss";
 
-type ButtonProps = {
-  modifiers?: ("second" | "small" | "auto-width")[];
+type ButtonModifier =
+  | "second"
+  | "small"
+  | "auto-width"
+  | "inherit"
+  | "transparent";
+
+export type ButtonProps = {
+  modifiers?: ButtonModifier[];
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = ({ className, modifiers, ...restProps }: ButtonProps) => {

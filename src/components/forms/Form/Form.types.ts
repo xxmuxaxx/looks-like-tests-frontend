@@ -25,8 +25,9 @@ export type SectionItem<T extends FormFields> =
     };
 
 export type ActionItem = {
-  type: "submit" | "reset";
+  type: "submit" | "reset" | "link";
   text: string;
+  to?: string;
 };
 
 export type FieldItem<T extends string | number | symbol> = {

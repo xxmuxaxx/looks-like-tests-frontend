@@ -1,4 +1,18 @@
 .button {
+  --background-color: var(--second);
+  --border-color: var(--second);
+  --color: var(--white);
+  // hover
+  --hover-background-color: transparent;
+  --hover-border-color: var(--second);
+  --hover-color: var(--second);
+  // focus
+  --focus-box-shadow: 0 0 4px rgba(var(--second-rgb), 0.4);
+  // disabled
+  --disabled-background-color: var(--medium-gray);
+  --disabled-border-color: var(--medium-gray);
+  --disabled-color: var(--dark-gray);
+
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -10,10 +24,10 @@
   font-size: 0.875rem;
   font-weight: bold;
   line-height: 1;
-  color: var(--white);
+  color: var(--color);
   text-align: center;
-  background-color: var(--second);
-  border-color: var(--second);
+  background-color: var(--background-color);
+  border-color: var(--border-color);
   border-style: solid;
   border-width: 1px;
   border-radius: 50px;
@@ -31,22 +45,22 @@
   }
 
   &:hover {
-    color: var(--second);
-    background-color: transparent;
-    border-color: var(--second);
+    color: var(--hover-color);
+    background-color: var(--hover-background-color);
+    border-color: var(--hover-border-color);
     outline: transparent;
     text-decoration: none;
   }
 
   &:focus {
-    box-shadow: 0 0 4px rgba(var(--second-rgb), 0.4);
+    box-shadow: var(--focus-box-shadow);
   }
 
   &:disabled,
   &.disabled {
-    background-color: var(--medium-gray);
-    border-color: var(--medium-gray);
-    color: var(--dark-gray);
+    background-color: var(--disabled-background-color);
+    border-color: var(--disabled-border-color);
+    color: var(--disabled-color);
     cursor: not-allowed;
   }
 
@@ -55,9 +69,22 @@
   }
 
   &--second {
-    background-color: transparent;
-    border-color: var(--gray);
-    color: var(--gray);
+    --background-color: transparent;
+    --border-color: var(--gray);
+    --color: var(--gray);
+  }
+
+  &--inherit {
+    --color: inherit;
+    --hover-color: inherit;
+  }
+
+  &--transparent {
+    --background-color: transparent;
+    --border-color: transparent;
+    --hover-background-color: transparent;
+    --hover-border-color: transparent;
+    --focus-box-shadow: transparent;
   }
 
   &--small {

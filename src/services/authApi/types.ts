@@ -27,6 +27,7 @@ export type RegistrationDTO = {
   middleName?: string;
   email?: string;
   phone?: string;
+  authorities: Roles[];
 };
 
 export type LoginDTO = {

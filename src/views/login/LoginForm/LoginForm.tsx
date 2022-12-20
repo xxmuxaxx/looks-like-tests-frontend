@@ -3,10 +3,10 @@ import { Navigate, useLocation } from "react-router-dom";
 
 import { useAuthenticateMutation } from "services/authApi";
 import { Form } from "components/forms";
+import { useAuth } from "store/auth";
 import { loginLayout, loginSchema } from "./LoginForm.data";
 
 import "./LoginForm.scss";
-import { useAuth } from "store/auth";
 
 export type LoginFormFields = {
   email: string;
@@ -42,15 +42,13 @@ const LoginForm = () => {
   }
 
   return (
-    <div>
-      <Form
-        initialValues={initialValues}
-        validationSchema={loginSchema}
-        onSubmit={handleLogin}
-        layout={loginLayout}
-        isLoading={isLoading}
-      />
-    </div>
+    <Form
+      initialValues={initialValues}
+      validationSchema={loginSchema}
+      onSubmit={handleLogin}
+      layout={loginLayout}
+      isLoading={isLoading}
+    />
   );
 };
 

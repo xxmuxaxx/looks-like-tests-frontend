@@ -1,10 +1,11 @@
 import { Formik, FormikConfig } from "formik";
 
-import { Button, SectionTitle } from "components/shared";
+import { SectionTitle } from "components/shared";
 import FormGrid from "../FormGrid/FormGrid";
 import FormSection from "../FormSection/FormSection";
 import FormActions from "../FormActions/FormActions";
 import FormField from "../FormField/FormField";
+import FormAction from "../FormAction/FormAction";
 import type {
   ActionItem,
   FieldItem,
@@ -90,33 +91,16 @@ const Form = <T extends FormFields>({
         );
       };
 
-      const getAction = ({ type, text }: ActionItem, index: number) => {
+      const getAction = ({ type, text, to }: ActionItem, index: number) => {
         const key = `action-${index}`;
 
-        switch (type) {
-          case "submit":
-            return (
-              <Button key={key} type={type} disabled={isLoading}>
-                {text}
-              </Button>
-            );
-
-          case "reset":
-            return (
-              <Button
-                key={key}
-                modifiers={["auto-width", "second"]}
-                type={type}
-                disabled={isLoading}
-                onClick={() => resetForm()}
-              >
-                {text}
-              </Button>
-            );
-
-          default:
-            return null;
-        }
+        return (
+          <FormAction
+            {...{ key, type, text, to }}
+            disabled={isLoading}
+            onReset={resetForm}
+          />
+        );
       };
 
       return (

@@ -8,6 +8,7 @@ import LoginPage from "views/login";
 import ProfilePage from "views/profile";
 import TestsPage from "views/tests";
 import TestPage from "views/test";
+import RegistrationPage from "views/registration";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 const routes = createBrowserRouter([
@@ -67,6 +68,10 @@ const routes = createBrowserRouter([
   {
     path: "login",
     element: <LoginPage />,
+  },
+  {
+    path: "registration",
+    element: <RegistrationPage />,
   },
 ]);
 

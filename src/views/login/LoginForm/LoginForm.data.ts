@@ -26,6 +26,11 @@ export const loginLayout: FormLayout<LoginFormFields> = [
         type: "submit",
         text: "Войти",
       },
+      {
+        type: "link",
+        text: "Зарегистрироваться",
+        to: "/registration",
+      },
     ],
   },
 ];
