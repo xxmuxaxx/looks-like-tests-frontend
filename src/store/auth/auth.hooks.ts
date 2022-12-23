@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { bindActionCreators } from "@reduxjs/toolkit";
 import jwtDecode from "jwt-decode";
 import toast from "react-hot-toast";
@@ -28,8 +28,11 @@ const useProtectedAuth = () => {
 
   const fullName = getFullName(user.firstName, user.lastName, user.middleName);
 
-  const userHasRole = (role: Roles): boolean =>
-    user.authorities.some((authority) => role === authority);
+  const userHasRole = useCallback(
+    (role: Roles): boolean =>
+      user.authorities.some((authority) => role === authority),
+    [user.authorities]
+  );
 
   return { user, token, fullName, userHasRole, ...auth };
 };

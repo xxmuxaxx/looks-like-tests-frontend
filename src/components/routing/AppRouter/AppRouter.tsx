@@ -7,6 +7,7 @@ import { Roles } from "services/authApi";
 import LoginPage from "views/login";
 import ProfilePage from "views/profile";
 import TestsPage from "views/tests";
+import TestsCheckPage from "views/tests-check";
 import TestPage from "views/test";
 import RegistrationPage from "views/registration";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -20,33 +21,51 @@ const routes = createBrowserRouter([
         element: <Layout />,
         children: [
           {
-            element: (
-              <ProtectedRoute
-                allowedRoles={[Roles.admin, Roles.teacher, Roles.student]}
-              />
-            ),
+            index: true,
+            element: <SectionTitle>Главная</SectionTitle>,
+          },
+          {
+            path: "tests",
             children: [
               {
                 index: true,
-                element: <SectionTitle>Главная</SectionTitle>,
-              },
-              {
-                path: "tests",
                 element: <TestsPage />,
               },
               {
-                path: "tests/progress/:testProgressId",
+                path: "progress/:testProgressId",
                 element: <TestPage />,
               },
               {
-                path: "history",
-                element: <SectionTitle>История тестов</SectionTitle>,
-              },
-              {
-                path: "profile",
-                element: <ProfilePage />,
+                element: <ProtectedRoute allowedRoles={[Roles.teacher]} />,
+                children: [
+                  {
+                    path: "check",
+                    children: [
+                      {
+                        index: true,
+                        element: <TestsCheckPage />,
+                      },
+                      {
+                        path: ":testId",
+                        element: <SectionTitle>Проверка теста</SectionTitle>,
+                      },
+                    ],
+                  },
+                  {
+                    path: "assign",
+                    element: <SectionTitle>Назначение тестов</SectionTitle>,
+                  },
+                ],
               },
             ],
+          },
+          {
+            path: "history",
+            element: <SectionTitle>История тестов</SectionTitle>,
+          },
+          {
+            path: "profile",
+            element: <ProfilePage />,
           },
           {
             element: <ProtectedRoute allowedRoles={[Roles.admin]} />,

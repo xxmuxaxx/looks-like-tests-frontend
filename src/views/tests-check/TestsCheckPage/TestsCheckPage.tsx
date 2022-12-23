@@ -1,4 +1,32 @@
-export const mockTests: any[] = [
+import { Empty, List, SectionTitle } from "components/shared";
+import { TestCard } from "components/tests";
+
+import "./TestsCheckPage.scss";
+
+const TestsCheckPage = () => (
+  <section>
+    <SectionTitle>Проверка тестов</SectionTitle>
+
+    {mockTests.length ? (
+      <List
+        className="teacher-test-list"
+        items={mockTests}
+        renderItem={({ testId, title, description, info }) => (
+          <li className="teacher-test-item">
+            <TestCard {...{ testId, title, description, info }} />
+          </li>
+        )}
+      />
+    ) : (
+      <Empty
+        className="teacher-test-empty"
+        text="Пока еще нет ни одного теста"
+      />
+    )}
+  </section>
+);
+
+const mockTests: any[] = [
   {
     testId: 1,
     title: "Тестирование на знание методов оценки",
@@ -22,3 +50,5 @@ export const mockTests: any[] = [
     ],
   },
 ];
+
+export default TestsCheckPage;
