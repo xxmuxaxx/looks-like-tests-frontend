@@ -13,6 +13,7 @@ import storage from "redux-persist/lib/storage";
 
 import { authApi } from "services/authApi";
 import { testsApi } from "services/testsApi";
+import { usersApi } from "services/usersApi";
 import { rtkQueryErrorLogger } from "./middlewares";
 import rootReducer from "./rootReducer";
 
@@ -27,7 +28,12 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat([authApi.middleware, testsApi.middleware, rtkQueryErrorLogger]),
+    }).concat([
+      authApi.middleware,
+      testsApi.middleware,
+      usersApi.middleware,
+      rtkQueryErrorLogger,
+    ]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

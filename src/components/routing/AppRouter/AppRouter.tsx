@@ -8,6 +8,7 @@ import LoginPage from "views/login";
 import ProfilePage from "views/profile";
 import TestsPage from "views/tests";
 import TestsCheckPage from "views/tests-check";
+import TestsAssignPage from "views/tests-assign";
 import TestPage from "views/test";
 import RegistrationPage from "views/registration";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -53,7 +54,7 @@ const routes = createBrowserRouter([
                   },
                   {
                     path: "assign",
-                    element: <SectionTitle>Назначение тестов</SectionTitle>,
+                    element: <TestsAssignPage />,
                   },
                 ],
               },

@@ -20,7 +20,7 @@ const Nav = ({ items, onLogout }: NavProps) => {
       <ul className="nav__list">
         {items.map(({ path, name, icon }) => (
           <li key={path} className="nav__item">
-            <NavLink to={path} className="nav__link">
+            <NavLink to={path} end className="nav__link">
               {React.cloneElement(icon, { className: "nav__icon" })}
               <p className="nav__text">{name}</p>
             </NavLink>
