@@ -12,7 +12,7 @@ const persistor = persistStore(store);
 
 const App = () => (
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
+    <PersistGate loading={<>Loh</>} persistor={persistor}>
       <AppRouter />
       <Toaster />
     </PersistGate>
